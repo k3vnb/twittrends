@@ -1,17 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './components/App';
 import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import rootReducer from './reducers';
 import thunkMiddleware from 'redux-thunk';
 // import middlewareLogger from './middleware/middleware-logger';
 
-const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
+const initialState = {
+  tweets: [],
+  tags: {}
+};
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('react-app-root')
-);
+const store = createStore( applyMiddleware(thunkMiddleware));
+
+const tweetReducer = (state = initialState, action) => {
+
+  return;
+};
+
+store.dispatch({ type: payload });

@@ -1,12 +1,24 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { fetchResults } from './../actions';
+import PropTypes from 'prop-types';
 
-function Twits(){
+function Twits({ dispatch }){
 
   return(
-    <div>
+    <div onClick={e => {
+      e.preventDefault();
+      console.log('clickedy');
+      dispatch(fetchResults());
+    }}>
       Twits
     </div>
   );
 }
 
-export default Twits;
+
+Twits.propTypes = {
+  dispatch: PropTypes.func
+};
+
+export default connect()(Twits);

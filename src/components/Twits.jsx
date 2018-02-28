@@ -3,22 +3,32 @@ import { connect } from 'react-redux';
 import { fetchResults } from './../actions';
 import PropTypes from 'prop-types';
 
-function Twits({ dispatch }){
+class Twits extends React.Component{
+  render() {
+    return(
+      <div onClick={ () => {this.handleButtonClick();} }>
 
-  return(
-    <div onClick={e => {
-      e.preventDefault();
-      console.log('clickedy');
-      dispatch(fetchResults());
-    }}>
-      Twits
-    </div>
-  );
+        Twits
+      </div>
+    );
+  }
+
+  handleButtonClick() {
+    console.log('thus');
+    this.props.dispatch(fetchResults());
+
+  }
+
 }
-
 
 Twits.propTypes = {
   dispatch: PropTypes.func
 };
 
-export default connect()(Twits);
+const mapStateToProps = state => {
+  return {
+    trending: state.trending
+  };
+};
+
+export default connect(mapStateToProps)(Twits);
